@@ -8,10 +8,29 @@ import { useEffect, useState } from 'react';
 
 export const Ukol5 = () => {
   const [postava, setPostava] = useState(null);
+  useEffect(() => {
+    const fetchCharacter = async () => {
+      const response = await fetch('https://hp-api.onrender.com/api/character/ca3827f0-375a-4891-aaa5-f5e8a5bad225');
+      const data = await response.json();
+      setPostava(data[0]);
+    }
+    fetchCharacter();
+  }, [])
   return (
     <>
       <h1>Úkol 5</h1>
-      <p>Načítám...</p>
+      {
+        postava ? (
+          <div className="character">
+            <img src={postava.image} alt={postava.name} className="character__photo" />
+            <h2 className="character__title">{postava.name}</h2>
+            <p className='character__actor'>{postava.actor}</p>
+          </div>
+        ) : (
+          <p>Načítám...</p>
+        )
+      }
+      
     </>
   );
 };

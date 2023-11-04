@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const Ukol1 = () => {
   useEffect(() => {
-    // Zde napište svůj kód...
+    console.log('Jsem tady')
   }, []);
 
   return (
